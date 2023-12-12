@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public float[] currencies;
 
     public BaseMinion currentMin;
     public FaceCamer[] locations;

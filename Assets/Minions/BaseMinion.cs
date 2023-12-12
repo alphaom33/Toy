@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseMinion : MonoBehaviour
 {
-    public GameObject human;
+    public HumanController human;
     public GameMaster controller;
     public float tickSpeed = 0.1f;
     public string[] tags;
@@ -14,6 +14,7 @@ public class BaseMinion : MonoBehaviour
     private void Start()
     {
         controller = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
+        Begin();
         StartCoroutine(Tick());
     }
 
@@ -26,6 +27,11 @@ public class BaseMinion : MonoBehaviour
 
     public virtual void DoStuff()
     {
-        controller.currencies[costType]++;
+
+    }
+
+    public virtual void Begin()
+    {
+
     }
 }

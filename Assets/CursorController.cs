@@ -7,12 +7,16 @@ public class CursorController : MonoBehaviour
 {
     public GameMaster master;
     public bool inMinionPlace;
+    public HumanController currentHuman;
+    public HumanController storeHuman;
+    private MenuFather father;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
         master = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
+        father = GameObject.FindWithTag("Father").GetComponent<MenuFather>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,8 @@ public class CursorController : MonoBehaviour
         {
             Cursor.visible = true;
         }
+        if (currentHuman != null)
+            storeHuman = currentHuman;
     }
 
     private void SetPositionToCursor()
@@ -50,7 +56,9 @@ public class CursorController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && inMinionPlace)
         {
-            Instantiate(master.currentMin.gameObject, transform.position, transform.rotation);
+            Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation).transform;
+            minion.Rotate(90, 0, 0);
+            minion.GetComponent<BaseMinion>().human = currentHuman;
         }
     }
 
@@ -58,10 +66,18 @@ public class CursorController : MonoBehaviour
     {
         if (other.CompareTag("MinionPlace"))
             inMinionPlace = true;
+        if (other.CompareTag("Human"))
+        {
+            currentHuman = other.GetComponent<HumanController>();
+            father.ResetButtons(currentHuman.unlockeds);
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("MinionPlace"))
             inMinionPlace = false;
+        if (other.CompareTag("Human"))
+            currentHuman = null;
     }
 }
