@@ -18,15 +18,15 @@ public class Display : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HumanController currentHuman = cursor.currentHuman;
+        HumanController currentHuman = cursor.storeHuman;
         text.text = "";
         if (currentHuman)
         {
             foreach (HumanController.Currency c in currentHuman.currencies)
             {
-                if (c.max > 0)
+                if (c.val > 0)
                 {
-                    text.text += "  " + c.tag + ": " + c.val;
+                    text.text += "  " + c.name + ": " + c.val;
                     text.text += "/" + c.max;
                 }
             }

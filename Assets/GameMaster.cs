@@ -7,7 +7,7 @@ public class GameMaster : MonoBehaviour
 {
 
     public BaseMinion currentMin;
-    public FaceCamer[] locations;
+    public List<HumanController> humans = new();
 
     public CinemachineVirtualCamera[] cameras;
     public float currentCamera;
@@ -31,6 +31,16 @@ public class GameMaster : MonoBehaviour
             currentCamera += currentCamera < 0 ? 4 : 0;
             ChangeCamera();
         }
+
+        foreach (HumanController controller in humans)
+        {
+            if (controller.health < 0)
+            {
+                humans.Remove(controller);
+                Destroy(controller.gameObject);
+                break;
+            }
+        }
     }
 
     private void ChangeCamera()
@@ -46,16 +56,19 @@ public class GameMaster : MonoBehaviour
 
     private void CheckLocs()
     {
-        foreach (FaceCamer f in locations)
+        foreach (HumanController human in humans)
         {
-            f.gameObject.SetActive(false);
-            for (int i = 0; i < f.tags.Length; i++)
+            foreach (FaceCamer f in human.locations)
             {
-                for (int j = 0; j < currentMin.tags.Length; j++)
+                f.gameObject.SetActive(false);
+                for (int i = 0; i < f.tags.Length; i++)
                 {
-                    if (currentMin.tags[j] == f.tags[i])
+                    for (int j = 0; j < currentMin.tags.Length; j++)
                     {
-                        f.gameObject.SetActive(true);
+                        if (currentMin.tags[j] == f.tags[i])
+                        {
+                            f.gameObject.SetActive(true);
+                        }
                     }
                 }
             }
