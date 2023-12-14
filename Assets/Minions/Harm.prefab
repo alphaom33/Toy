@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &609357269127337502
+--- !u!1001 &8445889725453041261
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,18 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -34,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -50,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 476453721843789190, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -60,41 +48,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_Size.x
-      value: 0.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_Size.y
-      value: 0.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 008b085993c954b43af785cea2b0f326, type: 3}
-    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178393407956832065, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 82e5a1e5a87dde24f99e38d549ca30c2, type: 2}
     - target: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Name
-      value: Snot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: tickSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: tags.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-      propertyPath: tags.Array.data[0]
-      value: Snot
+      value: Harm
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
@@ -103,29 +59,30 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 2094173054317683744}
+      addedObject: {fileID: 1057370711760831754}
   m_SourcePrefab: {fileID: 100100000, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
---- !u!1 &4614745009335836660 stripped
+--- !u!1 &4416855731905820551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
-  m_PrefabInstance: {fileID: 609357269127337502}
+  m_PrefabInstance: {fileID: 8445889725453041261}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2094173054317683744
+--- !u!114 &1057370711760831754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4614745009335836660}
+  m_GameObject: {fileID: 4416855731905820551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87db61fd08b82764b9e5f559a7fb9ada, type: 3}
+  m_Script: {fileID: 11500000, guid: c926660592da68641bca6487769c7641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   human: {fileID: 0}
   controller: {fileID: 0}
   tickSpeed: 0.1
   tags:
-  - Snot
+  - All
   costType: 0
-  cost: 5
+  cost: 0
+  damage: 0

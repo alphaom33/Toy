@@ -48,9 +48,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1920050386, guid: ecf7e0867d2b81a4c959f41ecb2f1176, type: 3}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Name
-      value: UnlockWater Variant
+      value: UnlockWater
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
@@ -60,6 +76,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       insertIndex: 1
       addedObject: {fileID: 9158532744922571210}
+    - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -166359936682002931}
   m_SourcePrefab: {fileID: 100100000, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
 --- !u!1 &2891676688279402406 stripped
 GameObject:
@@ -84,6 +103,27 @@ MonoBehaviour:
   tags:
   - Snot
   costType: 0
-  cost: 0
+  cost: 20
   unlocks:
   - {fileID: -5479462948941496800, guid: 8c441214fa182c345b471285b91a5035, type: 3}
+--- !u!95 &-166359936682002931
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891676688279402406}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8893d279a5a8b5f44894032d1b5748be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

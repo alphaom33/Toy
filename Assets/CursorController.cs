@@ -56,7 +56,7 @@ public class CursorController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && inMinionPlace)
         {
-            Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation).transform;
+            Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.transform).transform;
             minion.Rotate(90, 0, 0);
             minion.GetComponent<BaseMinion>().human = currentHuman;
         }

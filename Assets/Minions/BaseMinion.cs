@@ -14,6 +14,7 @@ public class BaseMinion : MonoBehaviour
     private void Start()
     {
         controller = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
+        human.currencies[costType].val -= cost;
         Begin();
         StartCoroutine(Tick());
     }
