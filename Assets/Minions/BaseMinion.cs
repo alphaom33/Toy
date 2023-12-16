@@ -8,21 +8,26 @@ public class BaseMinion : MonoBehaviour
     public GameMaster controller;
     public float tickSpeed = 0.1f;
     public string[] tags;
-    public int costType;
-    public float cost;
+    //public int costType;
+    public float[] costs = new float[3];
 
     private void Start()
     {
         controller = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
-        human.currencies[costType].val -= cost;
+
+        for (int i = 0; i < costs.Length; i++)
+        {
+            human.currencies[i].val -= costs[i];
+        }
+
         Begin();
         StartCoroutine(Tick());
     }
 
     private IEnumerator Tick()
     {
-        yield return new WaitForSeconds(tickSpeed);
         DoStuff();
+        yield return new WaitForSeconds(tickSpeed);
         StartCoroutine(Tick());
     }
 

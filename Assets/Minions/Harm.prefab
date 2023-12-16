@@ -83,6 +83,8 @@ MonoBehaviour:
   tickSpeed: 0.1
   tags:
   - All
-  costType: 0
-  cost: 0
+  costs:
+  - 15
+  - 15
+  - 5
   damage: 0

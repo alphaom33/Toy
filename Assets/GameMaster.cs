@@ -8,16 +8,56 @@ public class GameMaster : MonoBehaviour
 
     public BaseMinion currentMin;
     public List<HumanController> humans = new();
+    private MenuFather father;
 
     public CinemachineVirtualCamera[] cameras;
     public float currentCamera;
 
+    [Header("Base Unlocks")]
+    public List<BaseMinion> baseUnlockeds = new();
+    public BaseMinion storeSnot;
+    public BaseMinion makeWater;
+
     private void Start()
     {
         CheckLocs();
+        father = GameObject.FindWithTag("Father").GetComponent<MenuFather>();
+        StartCoroutine(SlowExpose());
     }
 
     private void Update()
+    {
+        CameraControl();
+
+        KillHumans();
+    }
+
+    private IEnumerator SlowExpose()
+    {
+        yield return new WaitWhile(() => humans[0].currencies[0].val < storeSnot.costs[0]);
+        baseUnlockeds.Add(storeSnot);
+        humans[0].unlockeds.Add(storeSnot);
+        father.ResetButtons(humans[0].unlockeds);
+        yield return new WaitWhile(() => humans[0].currencies[0].val < makeWater.costs[0]);
+        baseUnlockeds.Add(makeWater);
+        humans[0].unlockeds.Add(makeWater);
+        father.ResetButtons(humans[0].unlockeds);
+    }
+
+    private void KillHumans()
+    {
+        foreach (HumanController controller in humans)
+        {
+            if (controller.health < 0)
+            {
+                humans.Remove(controller);
+                Destroy(controller.gameObject.GetComponentsInParent<Transform>()[1].gameObject);
+                break;
+            }
+        }
+    }
+
+    private void CameraControl()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -30,16 +70,6 @@ public class GameMaster : MonoBehaviour
             currentCamera--;
             currentCamera += currentCamera < 0 ? 4 : 0;
             ChangeCamera();
-        }
-
-        foreach (HumanController controller in humans)
-        {
-            if (controller.health < 0)
-            {
-                humans.Remove(controller);
-                Destroy(controller.gameObject);
-                break;
-            }
         }
     }
 
