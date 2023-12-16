@@ -54,9 +54,9 @@ public class CursorController : MonoBehaviour
 
     private void SpawnMans()
     {
-        if (Input.GetMouseButtonDown(0) && inMinionPlace)
+        if (Input.GetMouseButtonDown(0) && inMinionPlace && HasCash())
         {
-            Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.transform).transform;
+            Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.GetComponentsInParent<Transform>()[1]).transform;
             minion.Rotate(90, 0, 0);
             minion.GetComponent<BaseMinion>().human = currentHuman;
         }
@@ -79,5 +79,16 @@ public class CursorController : MonoBehaviour
             inMinionPlace = false;
         if (other.CompareTag("Human"))
             currentHuman = null;
+    }
+
+    private bool HasCash()
+    {
+        float[] temp = master.currentMin.costs;
+        for (int i = 0; i < storeHuman.currencies.Length; i++)
+        {
+            if (storeHuman.currencies[i].val - temp[i] < 0)
+                return false;
+        }
+        return true;
     }
 }

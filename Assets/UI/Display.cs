@@ -24,7 +24,7 @@ public class Display : MonoBehaviour
         {
             foreach (HumanController.Currency c in currentHuman.currencies)
             {
-                if (c.val > 0)
+                if (c.unlocked)
                 {
                     text.text += "  " + c.name + ": " + c.val;
                     text.text += "/" + c.max;

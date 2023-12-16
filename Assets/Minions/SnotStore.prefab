@@ -99,6 +99,11 @@ MonoBehaviour:
   tickSpeed: 0.1
   tags:
   - Snot
-  costType: 0
-  cost: 10
-  maxAmount: 10
+  costs:
+  - 10
+  - 0
+  - 0
+  maxAmount:
+  - 10
+  - 0
+  - 0

@@ -99,11 +99,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   human: {fileID: 0}
   controller: {fileID: 0}
-  tickSpeed: 0.1
+  tickSpeed: 1
   tags:
   - Muscle
-  costType: 2
-  cost: 0
+  costs:
+  - 0
+  - 0
+  - 5
+  gatherType: 0
 --- !u!95 &5120524494869743708
 Animator:
   serializedVersion: 5

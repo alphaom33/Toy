@@ -9,6 +9,7 @@ public class HumanController : MonoBehaviour
         public float max;
         public string name;
         public float val;
+        public bool unlocked;
 
         public Currency(float max, string name) : this()
         {
@@ -31,9 +32,17 @@ public class HumanController : MonoBehaviour
             this.val = val;
         }
 
+        public Currency(float val, float max, string name, bool unlocked) : this()
+        {
+            this.max = max;
+            this.name = name;
+            this.val = val;
+            this.unlocked = unlocked;
+        }
+
     }
 
-    public Currency[] currencies = { new(5, 10, "Snot"), new("Water"), new("Muscle") };
+    public Currency[] currencies = { new(5, 10, "Snot", true), new(5, 10, "Water"), new(5, 5, "Muscle") };
     public List<BaseMinion> unlockeds;
     public float health;
     public FaceCamer[] locations;

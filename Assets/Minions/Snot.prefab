@@ -124,8 +124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   human: {fileID: 0}
   controller: {fileID: 0}
-  tickSpeed: 0.1
+  tickSpeed: 1
   tags:
   - Snot
-  costType: 0
-  cost: 5
+  costs:
+  - 5
+  - 0
+  - 0
+  gatherType: 0
