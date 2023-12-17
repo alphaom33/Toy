@@ -17,7 +17,7 @@ public class MenuFather : MonoBehaviour
     {
         buttons = new List<GameObject>();
         cursor = GameObject.FindWithTag("Cursor").GetComponent<CursorController>();   
-        child = GetComponentInChildren<RectTransform>().gameObject;
+        child = GetComponentsInChildren<RectTransform>()[1].gameObject;
     }
 
     private void Update()

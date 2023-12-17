@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class GameMaster : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameMaster : MonoBehaviour
     public List<HumanController> humans = new();
     private MenuFather father;
 
-    public CinemachineVirtualCamera[] cameras;
+    //public CinemachineVirtualCamera[] cameras;
     public float currentCamera;
 
     [Header("Base Unlocks")]
@@ -62,25 +63,25 @@ public class GameMaster : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             currentCamera++;
-            currentCamera %= 4;
+            currentCamera %= humans.Count;
             ChangeCamera();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             currentCamera--;
-            currentCamera += currentCamera < 0 ? 4 : 0;
+            currentCamera += currentCamera < 0 ? humans.Count : 0;
             ChangeCamera();
         }
     }
 
     private void ChangeCamera()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < humans.Count; i++)
         {
             if (i == currentCamera)
-                cameras[i].Priority = 1;
+                humans[i].camer.Priority = 1;
             else
-                cameras[i].Priority = 0;
+                humans[i].camer.Priority = 0;
         }
     }
 
