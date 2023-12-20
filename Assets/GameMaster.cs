@@ -11,6 +11,11 @@ public class GameMaster : MonoBehaviour
     public List<HumanController> humans = new();
     private MenuFather father;
 
+    [Header("Boy Stuff")]
+    public HealthBar healthBar;
+    public float maxHealth = 20;
+    public float health;
+
     //public CinemachineVirtualCamera[] cameras;
     public float currentCamera;
 
@@ -21,6 +26,9 @@ public class GameMaster : MonoBehaviour
 
     private void Start()
     {
+        health = maxHealth;
+        healthBar.SetInitialHealth(health);
+
         CheckLocs();
         father = GameObject.FindWithTag("Father").GetComponent<MenuFather>();
         StartCoroutine(SlowExpose());
@@ -31,6 +39,8 @@ public class GameMaster : MonoBehaviour
         CameraControl();
 
         KillHumans();
+
+        Damage(0);
     }
 
     private IEnumerator SlowExpose()
@@ -110,5 +120,11 @@ public class GameMaster : MonoBehaviour
     {
         currentMin = minion;
         CheckLocs();
+    }
+
+    public void Damage(float amount)
+    {
+        health -= amount;
+        healthBar.UpdateHealth(health);
     }
 }

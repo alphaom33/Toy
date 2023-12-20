@@ -48,15 +48,20 @@ public class HumanController : MonoBehaviour
     public float health;
     public FaceCamer[] locations;
     public CinemachineVirtualCamera camer;
+    public HumanMovement movement;
+    private HumanDamage damage;
 
     // Start is called before the first frame update
     void Start()
     {
+        movement = GetComponent<HumanMovement>();
+        damage = GetComponent<HumanDamage>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        movement.Move();
+        damage.Damage();
     }
 }
