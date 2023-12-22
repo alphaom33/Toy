@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicMovement : MonoBehaviour, HumanMovement
 {
-    private Transform sign;
+    public Transform sign;
     public float speed;
 
     private void Start()

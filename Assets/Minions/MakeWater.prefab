@@ -108,6 +108,7 @@ MonoBehaviour:
   - 0
   unlocks:
   - {fileID: -5479462948941496800, guid: 8c441214fa182c345b471285b91a5035, type: 3}
+  - {fileID: 3898843037496722193, guid: 5ce457fcec3489448b0de87ea28c93c9, type: 3}
 --- !u!95 &-166359936682002931
 Animator:
   serializedVersion: 5

@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,19 +25,32 @@ public class GameMaster : MonoBehaviour
     public BaseMinion storeSnot;
     public BaseMinion makeWater;
 
+    [Header("Humans")]
+    public GameObject[] humanPrefabs;
+    public GameObject[] spawnPositions;
+    public float spawnWaitTime;
+    public List<Transform> camers = new();
+    public CinemachineVirtualCamera virtualCamera;
+    private Transform currentCamer;
+
     private void Start()
     {
+        spawnPositions = GameObject.FindGameObjectsWithTag("HumanSpawn");
+
         health = maxHealth;
         healthBar.SetInitialHealth(health);
 
         CheckLocs();
         father = GameObject.FindWithTag("Father").GetComponent<MenuFather>();
         StartCoroutine(SlowExpose());
+        StartCoroutine(SpawnFriends());
+
+        health = maxHealth;
     }
 
     private void Update()
     {
-        CameraControl();
+        //CameraControl();
 
         KillHumans();
 
@@ -72,24 +86,25 @@ public class GameMaster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            currentCamera++;
-            currentCamera %= humans.Count;
-            ChangeCamera();
+            int temp = camers.FindIndex(a => a == currentCamer);
+            temp++;
+            temp %= camers.Count;
+            ChangeCamera(temp);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            currentCamera--;
-            currentCamera += currentCamera < 0 ? humans.Count : 0;
-            ChangeCamera();
+            //currentCamera--;
+            //currentCamera += currentCamera < 0 ? humans.Count : 0;
+            //ChangeCamera();
         }
     }
 
-    private void ChangeCamera()
+    private void ChangeCamera(int yes)
     {
         for (int i = 0; i < humans.Count; i++)
         {
-            if (i == currentCamera)
-                humans[i].camer.Priority = 1;
+            if (i == yes)
+                //camers.Priority = 1;
             else
                 humans[i].camer.Priority = 0;
         }
@@ -126,5 +141,13 @@ public class GameMaster : MonoBehaviour
     {
         health -= amount;
         healthBar.UpdateHealth(health);
+    }
+
+    private IEnumerator SpawnFriends()
+    {
+        Transform position = spawnPositions[Random.Range(0, 2)].transform;
+        Instantiate(humanPrefabs[Random.Range(0, humanPrefabs.Length)], position.position, Quaternion.Euler(0, 0, 0));
+        yield return new WaitForSeconds(spawnWaitTime);
+        StartCoroutine(SpawnFriends());
     }
 }
