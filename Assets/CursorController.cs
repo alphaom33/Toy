@@ -22,29 +22,25 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (master.currentCamera == 0)
-        {
-            SetPositionToCursor();
-            SpawnMans();
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.visible = true;
-        }
+        SetPositionToCursor();
+        SpawnMans();
+        Cursor.visible = false;
         if (currentHuman != null)
             storeHuman = currentHuman;
+        currentHuman = master.currentCamer.GetComponent<HumanController>();  
     }
 
     private void SetPositionToCursor()
     {
+        Transform camer = Camera.main.transform;
+
         RaycastHit hit;
         Vector3 castPoint = Input.mousePosition;
-        castPoint.z = 12.5f;
+        castPoint += camer.forward * 12.5f;
         castPoint = Camera.main.ScreenToWorldPoint(castPoint);
-        castPoint.z -= 12.5f;
+        castPoint -= camer.forward * 12.5f;
         LayerMask mask = LayerMask.GetMask("Default", "Player", "Ignore Camra");
-        if (Physics.Raycast(castPoint, Camera.main.transform.forward, out hit, Mathf.Infinity, mask))
+        if (Physics.Raycast(castPoint, camer.forward, out hit, Mathf.Infinity, mask))
         {
             transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
         }
@@ -66,19 +62,16 @@ public class CursorController : MonoBehaviour
     {
         if (other.CompareTag("MinionPlace"))
             inMinionPlace = true;
-        if (other.CompareTag("Human"))
-        {
-            currentHuman = other.GetComponent<HumanController>();
-            father.ResetButtons(currentHuman.unlockeds);
-        }
-
+        //if (other.CompareTag("Human"))
+        //{
+        //    currentHuman = other.GetComponent<HumanController>();
+        //    father.ResetButtons(currentHuman.unlockeds);
+        //}
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("MinionPlace"))
             inMinionPlace = false;
-        if (other.CompareTag("Human"))
-            currentHuman = null;
     }
 
     private bool HasCash()

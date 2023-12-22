@@ -18,7 +18,7 @@ public class GameMaster : MonoBehaviour
     public float health;
 
     //public CinemachineVirtualCamera[] cameras;
-    public float currentCamera;
+    //public float currentCamera;
 
     [Header("Base Unlocks")]
     public List<BaseMinion> baseUnlockeds = new();
@@ -30,8 +30,8 @@ public class GameMaster : MonoBehaviour
     public GameObject[] spawnPositions;
     public float spawnWaitTime;
     public List<Transform> camers = new();
+    public Transform currentCamer;
     public CinemachineVirtualCamera virtualCamera;
-    private Transform currentCamer;
 
     private void Start()
     {
@@ -46,11 +46,14 @@ public class GameMaster : MonoBehaviour
         StartCoroutine(SpawnFriends());
 
         health = maxHealth;
+
+        currentCamer = camers[0];
     }
 
     private void Update()
     {
-        //CameraControl();
+        CameraControl();
+        CamerLook();
 
         KillHumans();
 
@@ -59,6 +62,8 @@ public class GameMaster : MonoBehaviour
 
     private IEnumerator SlowExpose()
     {
+        yield return new WaitForEndOfFrame();
+        father.ResetButtons(baseUnlockeds);
         yield return new WaitWhile(() => humans[0].currencies[0].val < storeSnot.costs[0]);
         baseUnlockeds.Add(storeSnot);
         humans[0].unlockeds.Add(storeSnot);
@@ -76,6 +81,11 @@ public class GameMaster : MonoBehaviour
             if (controller.health < 0)
             {
                 humans.Remove(controller);
+                int temp = camers.IndexOf(currentCamer);
+                temp++;
+                temp %= camers.Count;
+                currentCamer = camers[temp];
+                camers.Remove(currentCamer);
                 Destroy(controller.gameObject.GetComponentsInParent<Transform>()[1].gameObject);
                 break;
             }
@@ -86,28 +96,24 @@ public class GameMaster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            int temp = camers.FindIndex(a => a == currentCamer);
+            int temp = camers.IndexOf(currentCamer);
             temp++;
             temp %= camers.Count;
-            ChangeCamera(temp);
+            currentCamer = camers[temp];
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            //currentCamera--;
-            //currentCamera += currentCamera < 0 ? humans.Count : 0;
-            //ChangeCamera();
+            int temp = camers.IndexOf(currentCamer);
+            temp--;
+            temp += temp < 0 ? camers.Count : 0;
+            currentCamer = camers[temp];
         }
     }
 
-    private void ChangeCamera(int yes)
+    private void CamerLook()
     {
-        for (int i = 0; i < humans.Count; i++)
-        {
-            if (i == yes)
-                //camers.Priority = 1;
-            else
-                humans[i].camer.Priority = 0;
-        }
+        if (currentCamer != null)
+            virtualCamera.transform.LookAt(currentCamer);
     }
 
     private void CheckLocs()
@@ -145,9 +151,11 @@ public class GameMaster : MonoBehaviour
 
     private IEnumerator SpawnFriends()
     {
-        Transform position = spawnPositions[Random.Range(0, 2)].transform;
-        Instantiate(humanPrefabs[Random.Range(0, humanPrefabs.Length)], position.position, Quaternion.Euler(0, 0, 0));
         yield return new WaitForSeconds(spawnWaitTime);
+        Transform position = spawnPositions[UnityEngine.Random.Range(0, 2)].transform;
+        GameObject tmp = Instantiate(humanPrefabs[UnityEngine.Random.Range(0, humanPrefabs.Length)], position.position, Quaternion.Euler(0, 0, 0));
+        humans.Add(tmp.GetComponentInChildren<HumanController>());
+        camers.Add(tmp.GetComponentsInChildren<Transform>()[1]);
         StartCoroutine(SpawnFriends());
     }
 }
