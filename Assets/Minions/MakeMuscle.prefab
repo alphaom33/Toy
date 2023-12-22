@@ -48,9 +48,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.17089081
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Name
-      value: Minion Variant
+      value: MakeMuscle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
@@ -89,3 +109,4 @@ MonoBehaviour:
   - 0
   unlocks:
   - {fileID: 4222511697977338947, guid: 67e764608fc0a7c448354ed2c0f6c5d2, type: 3}
+  - {fileID: 1057370711760831754, guid: cf8afea9da470e44bb1e711df59eba89, type: 3}

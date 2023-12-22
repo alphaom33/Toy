@@ -9,6 +9,7 @@ TagManager:
   - Cursor
   - Father
   - Sign
+  - HumanSpawn
   layers:
   - Default
   - TransparentFX
