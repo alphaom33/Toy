@@ -105,6 +105,6 @@ MonoBehaviour:
   - All
   costs:
   - 15
-  - 15
-  - 5
-  damage: 0
+  - 10
+  - 7
+  damage: 1

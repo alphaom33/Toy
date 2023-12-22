@@ -106,7 +106,7 @@ MonoBehaviour:
   - 0
   - 0
   - 5
-  gatherType: 0
+  gatherType: 2
 --- !u!95 &5120524494869743708
 Animator:
   serializedVersion: 5

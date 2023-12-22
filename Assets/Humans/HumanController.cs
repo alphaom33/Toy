@@ -43,7 +43,7 @@ public class HumanController : MonoBehaviour
 
     }
 
-    public Currency[] currencies = { new(5, 10, "Snot", true), new(5, 10, "Water"), new(5, 5, "Muscle") };
+    public Currency[] currencies = { new(5, 10, "Snot", true), new(5, 10, "Water"), new(5, 7, "Muscle") };
     public List<BaseMinion> unlockeds;
     public float health;
     public FaceCamer[] locations;
