@@ -8,6 +8,7 @@ using Object = UnityEngine.Object;
 
 public class InspectorLockToggle
 {
+#if UNITY_EDITOR
     private static EditorWindow _mouseOverWindow;
 
     [MenuItem("Stuff/Select Inspector under mouse cursor (use hotkey) #&q")]
@@ -53,4 +54,5 @@ public class InspectorLockToggle
         Type type = Assembly.GetAssembly(typeof(Editor)).GetType("UnityEditorInternal.LogEntries");
         type.GetMethod("Clear").Invoke(null, null);
     }
+#endif
 }
