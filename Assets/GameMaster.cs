@@ -11,6 +11,8 @@ public class GameMaster : MonoBehaviour
     public BaseMinion currentMin;
     public List<HumanController> humans = new();
     private MenuFather father;
+    public bool canChangeCamers = true;
+
 
     [Header("Boy Stuff")]
     public HealthBar healthBar;
@@ -52,7 +54,8 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
-        CameraControl();
+        if (canChangeCamers)
+            CameraControl();
         CamerLook();
 
         KillHumans();

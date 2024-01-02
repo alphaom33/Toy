@@ -17,13 +17,17 @@ public class BasicMovement : MonoBehaviour, HumanMovement
         sign = GameObject.FindWithTag("Sign").transform;
         mine = GetComponentsInParent<Transform>()[1];
         player = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
 
     public void Move()
     {
         if ((transform.position - sign.position).magnitude > distance)
-            mine.Translate(speed * Time.deltaTime * (sign.position - transform.position).normalized);
+        {
+            Vector3 changePos = speed * Time.deltaTime * (sign.position - transform.position).normalized;
+            mine.Translate(changePos.x, 0, changePos.z);
+        }
         else
             player.Damage(damage);
     }
