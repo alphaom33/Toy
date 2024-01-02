@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -698,6 +698,7 @@ MonoBehaviour:
   currentMin: {fileID: 2094173054317683744, guid: 92258cd875262d1479c0b870726e473b, type: 3}
   humans:
   - {fileID: 1749564471}
+  canChangeCamers: 1
   healthBar: {fileID: 1018514378}
   maxHealth: 200
   health: 0
@@ -708,7 +709,7 @@ MonoBehaviour:
   humanPrefabs:
   - {fileID: 4559596003965507811, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
   spawnPositions: []
-  spawnWaitTime: 60
+  spawnWaitTime: 1
   camers:
   - {fileID: 1749564472}
   currentCamer: {fileID: 1749564472}
@@ -2031,6 +2032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1063358661}
+  - component: {fileID: 1063358662}
   m_Layer: 0
   m_Name: spawnPos
   m_TagString: HumanSpawn
@@ -2047,12 +2049,24 @@ Transform:
   m_GameObject: {fileID: 1063358660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: -11.7}
+  m_LocalPosition: {x: -0, y: 0, z: -2.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 118133051}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1063358662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063358660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cb4b1d86ed36a4ea870cebdb82a18b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1232278815
 Mesh:
   m_ObjectHideFlags: 0
@@ -3902,6 +3916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2127238431}
+  - component: {fileID: 2127238432}
   m_Layer: 0
   m_Name: spawnPos
   m_TagString: HumanSpawn
@@ -3918,12 +3933,24 @@ Transform:
   m_GameObject: {fileID: 2127238430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.07, y: 0, z: 0}
+  m_LocalPosition: {x: 2.39, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1459748105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2127238432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127238430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cb4b1d86ed36a4ea870cebdb82a18b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5652677429991484819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3938,11 +3965,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2371763247654096695, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9748418
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 2371763247654096695, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.7960362
+      value: -1.55
       objectReference: {fileID: 0}
     - target: {fileID: 2371763247654096695, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
       propertyPath: m_LocalRotation.w

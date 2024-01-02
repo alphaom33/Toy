@@ -6,7 +6,7 @@ public class NewMinion : BaseMinion
 {
     public BaseMinion[] unlocks;
 
-    public override void Begin()
+    public void AddUnlockeds()
     {
         foreach (BaseMinion b in unlocks)
         {

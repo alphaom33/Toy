@@ -43,7 +43,7 @@ public class HumanController : MonoBehaviour
 
     }
 
-    public Currency[] currencies = { new(5, 10, "Snot", true), new(5, 10, "Water"), new(5, 7, "Muscle") };
+    public Currency[] currencies = { new(50, 10, "Snot", true), new(5, 10, "Water"), new(5, 7, "Muscle") };
     public List<BaseMinion> unlockeds;
     public float health;
     public FaceCamer[] locations;
@@ -56,6 +56,7 @@ public class HumanController : MonoBehaviour
     {
         movement = GetComponent<HumanMovement>();
         damage = GetComponent<HumanDamage>();
+        UpdateTags();
     }
 
     // Update is called once per frame
@@ -63,5 +64,22 @@ public class HumanController : MonoBehaviour
     {
         movement.Move();
         damage.Damage();
+    }
+
+    void UpdateTags()
+    {
+        string[] checkTags = GameObject.FindWithTag("Player").GetComponent<GameMaster>().currentMin.tags;
+        foreach (FaceCamer f in locations)
+        {
+            f.gameObject.SetActive(false);
+            foreach (string tag in f.tags)
+            {
+                foreach (string s in checkTags)
+                {
+                    if (s == tag)
+                        f.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 }

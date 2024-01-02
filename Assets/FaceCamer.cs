@@ -5,21 +5,12 @@ using UnityEngine;
 public class FaceCamer : MonoBehaviour
 {
     public string[] tags;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector3 offset = new Vector3(90, 0, 0);
 
     // Update is called once per frame
     void Update()
     {
         transform.LookAt(Camera.main.transform);
-        transform.Rotate(90, 0, 0);
-    }
-
-    private void OnMouseEnter()
-    {
-        Debug.Log("what");
+        transform.Rotate(offset);
     }
 }
