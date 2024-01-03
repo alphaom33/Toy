@@ -1017,7 +1017,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   human: {fileID: 0}
-  controller: {fileID: 0}
   tickSpeed: 0.1
   tags:
   - Snot
@@ -1025,9 +1024,11 @@ MonoBehaviour:
   - 20
   - 0
   - 0
+  myType: 6
+  max: 1
   unlocks:
   - {fileID: -5479462948941496800, guid: 8c441214fa182c345b471285b91a5035, type: 3}
-  - {fileID: 3898843037496722193, guid: 5ce457fcec3489448b0de87ea28c93c9, type: 3}
+  - {fileID: 4222511697977338947, guid: 67e764608fc0a7c448354ed2c0f6c5d2, type: 3}
 --- !u!95 &-166359936682002931
 Animator:
   serializedVersion: 5

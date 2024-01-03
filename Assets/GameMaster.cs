@@ -12,7 +12,8 @@ public class GameMaster : MonoBehaviour
     public List<HumanController> humans = new();
     private MenuFather father;
     public bool canChangeCamers = true;
-
+    public Material selected;
+    public Material no;
 
     [Header("Boy Stuff")]
     public HealthBar healthBar;
@@ -23,7 +24,7 @@ public class GameMaster : MonoBehaviour
     //public float currentCamera;
 
     [Header("Base Unlocks")]
-    public List<BaseMinion> baseUnlockeds = new();
+    [SerializeField] private List<BaseMinion> baseUnlockeds = new();
     public BaseMinion storeSnot;
     public BaseMinion makeWater;
 
@@ -50,6 +51,8 @@ public class GameMaster : MonoBehaviour
         health = maxHealth;
 
         currentCamer = camers[0];
+        baseUnlockeds.Add(makeWater);
+        baseUnlockeds.Add(storeSnot);
     }
 
     private void Update()
@@ -67,12 +70,12 @@ public class GameMaster : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         father.ResetButtons(baseUnlockeds);
+
         yield return new WaitWhile(() => humans[0].currencies[0].val < storeSnot.costs[0]);
-        baseUnlockeds.Add(storeSnot);
         humans[0].unlockeds.Add(storeSnot);
         father.ResetButtons(humans[0].unlockeds);
+
         yield return new WaitWhile(() => humans[0].currencies[0].val < makeWater.costs[0]);
-        baseUnlockeds.Add(makeWater);
         humans[0].unlockeds.Add(makeWater);
         father.ResetButtons(humans[0].unlockeds);
     }
@@ -99,17 +102,23 @@ public class GameMaster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            currentCamer.GetComponent<MeshRenderer>().material = no;
             int temp = camers.IndexOf(currentCamer);
             temp++;
             temp %= camers.Count;
             currentCamer = camers[temp];
+            currentCamer.GetComponent<MeshRenderer>().material = selected;
+            father.ResetButtons(currentCamer.GetComponent<HumanController>().unlockeds);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            currentCamer.GetComponent<MeshRenderer>().material = no;
             int temp = camers.IndexOf(currentCamer);
             temp--;
             temp += temp < 0 ? camers.Count : 0;
             currentCamer = camers[temp];
+            currentCamer.GetComponent<MeshRenderer>().material = selected;
+            father.ResetButtons(currentCamer.GetComponent<HumanController>().unlockeds);
         }
     }
 
@@ -157,7 +166,10 @@ public class GameMaster : MonoBehaviour
         yield return new WaitForSeconds(spawnWaitTime);
         Transform position = spawnPositions[UnityEngine.Random.Range(0, 2)].transform;
         GameObject tmp = Instantiate(humanPrefabs[UnityEngine.Random.Range(0, humanPrefabs.Length)], position.position, Quaternion.Euler(0, 0, 0));
-        humans.Add(tmp.GetComponentInChildren<HumanController>());
+        HumanController human = tmp.GetComponentInChildren<HumanController>();
+        human.unlockeds = baseUnlockeds;
+        humans.Add(human);
+
         camers.Add(tmp.GetComponentsInChildren<Transform>()[1]);
         StartCoroutine(SpawnFriends());
     }

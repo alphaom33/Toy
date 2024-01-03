@@ -699,11 +699,12 @@ MonoBehaviour:
   humans:
   - {fileID: 1749564471}
   canChangeCamers: 1
+  selected: {fileID: 2100000, guid: d9fe3f21db999a94e86fc08387e30885, type: 2}
+  no: {fileID: 2100000, guid: 23fa0e66d6154344fabaca1895565653, type: 2}
   healthBar: {fileID: 1018514378}
   maxHealth: 200
   health: 0
-  baseUnlockeds:
-  - {fileID: 2094173054317683744, guid: 92258cd875262d1479c0b870726e473b, type: 3}
+  baseUnlockeds: []
   storeSnot: {fileID: 6293376472831203937, guid: fdbf0196ddd62be458ac4e93638c6a36, type: 3}
   makeWater: {fileID: 9158532744922571210, guid: c9bce9aa9119ca244ae5708ba4c26213, type: 3}
   humanPrefabs:
@@ -4003,6 +4004,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicHuman
       objectReference: {fileID: 0}
+    - target: {fileID: 6487257946794331401, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
+      propertyPath: unlockeds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487257946794331401, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
+      propertyPath: unlockeds.Array.data[0]
+      value: 
+      objectReference: {fileID: 2094173054317683744, guid: 92258cd875262d1479c0b870726e473b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

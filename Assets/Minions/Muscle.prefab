@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   human: {fileID: 0}
-  controller: {fileID: 0}
   tickSpeed: 1
   tags:
   - Muscle
@@ -106,6 +105,8 @@ MonoBehaviour:
   - 0
   - 0
   - 5
+  myType: 2
+  max: 3
   gatherType: 2
 --- !u!95 &5120524494869743708
 Animator:

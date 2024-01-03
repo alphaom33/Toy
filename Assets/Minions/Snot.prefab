@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   human: {fileID: 0}
-  controller: {fileID: 0}
   tickSpeed: 1
   tags:
   - Snot
@@ -131,4 +130,6 @@ MonoBehaviour:
   - 5
   - 0
   - 0
+  myType: 0
+  max: 3
   gatherType: 0
