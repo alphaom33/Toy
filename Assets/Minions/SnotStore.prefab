@@ -95,7 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   human: {fileID: 0}
-  controller: {fileID: 0}
   tickSpeed: 0.1
   tags:
   - Snot
@@ -103,6 +102,8 @@ MonoBehaviour:
   - 10
   - 0
   - 0
+  myType: 3
+  max: 5
   maxAmount:
   - 10
   - 0

@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   human: {fileID: 0}
-  controller: {fileID: 0}
   tickSpeed: 0.1
   tags:
   - All
@@ -107,4 +106,6 @@ MonoBehaviour:
   - 15
   - 10
   - 7
+  myType: 7
+  max: 5
   damage: 1

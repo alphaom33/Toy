@@ -1,7 +1,10 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class HumanController : MonoBehaviour
 {
@@ -43,13 +46,20 @@ public class HumanController : MonoBehaviour
 
     }
 
+    [Header("Minion Stuffs")]
     public Currency[] currencies = { new(50, 10, "Snot", true), new(5, 10, "Water"), new(5, 7, "Muscle") };
-    public List<BaseMinion> unlockeds;
-    public float health;
+    public List<BaseMinion> unlockeds = new();
     public FaceCamer[] locations;
+
+    [Header("Other Stuffs")]
     public CinemachineVirtualCamera camer;
+    public float health;
+
+    [Header("Stuffs")]
     public HumanMovement movement;
     private HumanDamage damage;
+
+    public Dictionary<BaseMinion.MinionType, int> minionNums = new();
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +67,10 @@ public class HumanController : MonoBehaviour
         movement = GetComponent<HumanMovement>();
         damage = GetComponent<HumanDamage>();
         UpdateTags();
+        foreach (BaseMinion.MinionType type in Enum.GetValues(typeof(BaseMinion.MinionType)))
+        {
+            minionNums.Add(type, 0);
+        }
     }
 
     // Update is called once per frame

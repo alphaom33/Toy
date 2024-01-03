@@ -34,13 +34,12 @@ public class CursorController : MonoBehaviour
     {
         Transform camer = Camera.main.transform;
 
-        RaycastHit hit;
         Vector3 castPoint = Input.mousePosition;
         castPoint += camer.forward * 12.5f;
         castPoint = Camera.main.ScreenToWorldPoint(castPoint);
         castPoint -= camer.forward * 12.5f;
         LayerMask mask = LayerMask.GetMask("Default", "Player", "Ignore Camra");
-        if (Physics.Raycast(castPoint, camer.forward, out hit, Mathf.Infinity, mask))
+        if (Physics.Raycast(castPoint, camer.forward, out RaycastHit hit, Mathf.Infinity, mask))
         {
             transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
         }
@@ -50,11 +49,13 @@ public class CursorController : MonoBehaviour
 
     private void SpawnMans()
     {
-        if (Input.GetMouseButtonDown(0) && inMinionPlace && HasCash())
+        if (Input.GetMouseButtonDown(0) && inMinionPlace && HasCash() && storeHuman.minionNums[master.currentMin.myType] < master.currentMin.max)
         {
             Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.GetComponentsInParent<Transform>()[1]).transform;
             minion.Rotate(90, 0, 0);
-            minion.GetComponent<BaseMinion>().human = currentHuman;
+            BaseMinion controller = minion.GetComponent<BaseMinion>();
+            controller.human = currentHuman;
+            storeHuman.minionNums[controller.myType]++;
         }
     }
 
