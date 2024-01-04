@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -51,8 +52,6 @@ public class GameMaster : MonoBehaviour
         health = maxHealth;
 
         currentCamer = camers[0];
-        baseUnlockeds.Add(makeWater);
-        baseUnlockeds.Add(storeSnot);
     }
 
     private void Update()
@@ -73,10 +72,12 @@ public class GameMaster : MonoBehaviour
 
         yield return new WaitWhile(() => humans[0].currencies[0].val < storeSnot.costs[0]);
         humans[0].unlockeds.Add(storeSnot);
+        baseUnlockeds.Add(storeSnot);
         father.ResetButtons(humans[0].unlockeds);
 
         yield return new WaitWhile(() => humans[0].currencies[0].val < makeWater.costs[0]);
         humans[0].unlockeds.Add(makeWater);
+        baseUnlockeds.Add(makeWater);
         father.ResetButtons(humans[0].unlockeds);
     }
 
@@ -164,10 +165,10 @@ public class GameMaster : MonoBehaviour
     private IEnumerator SpawnFriends()
     {
         yield return new WaitForSeconds(spawnWaitTime);
-        Transform position = spawnPositions[UnityEngine.Random.Range(0, 2)].transform;
-        GameObject tmp = Instantiate(humanPrefabs[UnityEngine.Random.Range(0, humanPrefabs.Length)], position.position, Quaternion.Euler(0, 0, 0));
+        Vector3 position = spawnPositions[UnityEngine.Random.Range(0, 2)].transform.position;
+        GameObject tmp = Instantiate(humanPrefabs[UnityEngine.Random.Range(0, humanPrefabs.Length)], position, Quaternion.Euler(0, 0, 0));
         HumanController human = tmp.GetComponentInChildren<HumanController>();
-        human.unlockeds = baseUnlockeds;
+        human.unlockeds = baseUnlockeds.ToList();
         humans.Add(human);
 
         camers.Add(tmp.GetComponentsInChildren<Transform>()[1]);
