@@ -6,7 +6,7 @@ using UnityEngine.ProBuilder.MeshOperations;
 public class CursorController : MonoBehaviour
 {
     public GameMaster master;
-    public bool inMinionPlace;
+    public HumanController inMinionPlace;
     public HumanController currentHuman;
     public HumanController storeHuman;
     private MenuFather father;
@@ -22,7 +22,6 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetPositionToCursor();
         SpawnMans();
         Cursor.visible = false;
         if (currentHuman != null)
@@ -30,26 +29,9 @@ public class CursorController : MonoBehaviour
         currentHuman = master.currentCamer.GetComponent<HumanController>();  
     }
 
-    private void SetPositionToCursor()
-    {
-        Transform camer = Camera.main.transform;
-
-        Vector3 castPoint = Input.mousePosition;
-        castPoint += camer.forward * 12.5f;
-        castPoint = Camera.main.ScreenToWorldPoint(castPoint);
-        castPoint -= camer.forward * 12.5f;
-        LayerMask mask = LayerMask.GetMask("Default", "Player", "Ignore Camra");
-        if (Physics.Raycast(castPoint, camer.forward, out RaycastHit hit, Mathf.Infinity, mask))
-        {
-            transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-        }
-        if (hit.point != Vector3.zero)
-            transform.position = hit.point;
-    }
-
     private void SpawnMans()
     {
-        if (Input.GetMouseButtonDown(0) && inMinionPlace && HasCash() && storeHuman.minionNums[master.currentMin.myType] < master.currentMin.max)
+        if (Input.GetMouseButtonDown(0) && HasCash() && storeHuman.minionNums[master.currentMin.myType] < master.currentMin.max && storeHuman.Equals(inMinionPlace))
         {
             Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.GetComponentsInParent<Transform>()[1]).transform;
             minion.Rotate(90, 0, 0);
@@ -62,7 +44,7 @@ public class CursorController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("MinionPlace"))
-            inMinionPlace = true;
+            inMinionPlace = other.GetComponentInParent<HumanController>();
         //if (other.CompareTag("Human"))
         //{
         //    currentHuman = other.GetComponent<HumanController>();
@@ -72,7 +54,7 @@ public class CursorController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("MinionPlace"))
-            inMinionPlace = false;
+            inMinionPlace = null;
     }
 
     private bool HasCash()

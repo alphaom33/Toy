@@ -1,10 +1,7 @@
-using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
-using UnityEngineInternal;
 
 public class HumanController : MonoBehaviour
 {
@@ -14,20 +11,6 @@ public class HumanController : MonoBehaviour
         public string name;
         public float val;
         public bool unlocked;
-
-        public Currency(float max, string name) : this()
-        {
-            this.max = max;
-            this.name = name;
-            val = 0;
-        }
-
-        public Currency(string name) : this()
-        {
-            max = 10;
-            this.name = name;
-            val = 0;
-        }
 
         public Currency(float val, float max, string name) : this()
         {
@@ -47,13 +30,13 @@ public class HumanController : MonoBehaviour
     }
 
     [Header("Minion Stuffs")]
-    public Currency[] currencies = { new(50, 10, "Snot", true), new(5, 10, "Water"), new(5, 7, "Muscle") };
+    public Currency[] currencies = { new(5, 10, "Snot", true), new(5, 10, "Water"), new(5, 7, "Muscle") };
     public List<BaseMinion> unlockeds = new();
     public FaceCamer[] locations;
 
     [Header("Other Stuffs")]
-    public CinemachineVirtualCamera camer;
     public float health;
+    private GameMaster master;
 
     [Header("Stuffs")]
     public HumanMovement movement;
@@ -64,6 +47,7 @@ public class HumanController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        master = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
         movement = GetComponent<HumanMovement>();
         damage = GetComponent<HumanDamage>();
         UpdateTags();
@@ -76,13 +60,16 @@ public class HumanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.Move();
-        damage.Damage();
+        if (master.go)
+        {
+            movement.Move();
+            damage.Damage();
+        }
     }
 
     void UpdateTags()
     {
-        string[] checkTags = GameObject.FindWithTag("Player").GetComponent<GameMaster>().currentMin.tags;
+        string[] checkTags = master.currentMin.tags;
         foreach (FaceCamer f in locations)
         {
             f.gameObject.SetActive(false);
@@ -95,5 +82,16 @@ public class HumanController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void AddToCurrency(float add, Currency currency)
+    {
+        AddToCurrency(add, Array.IndexOf(currencies, currency));
+    }
+
+    public void AddToCurrency(float add, int index)
+    {
+        if (currencies[index].val < currencies[index].max)
+            currencies[index].val += add;
     }
 }

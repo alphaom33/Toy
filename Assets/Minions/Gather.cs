@@ -18,7 +18,8 @@ public class Gather : BaseMinion
 
     public override void DoStuff()
     {
-        if (human.currencies[gatherType].val < human.currencies[gatherType].max)
-            human.currencies[gatherType].val++;
+        human.AddToCurrency(1, gatherType);
+        //if (human.currencies[gatherType].val < human.currencies[gatherType].max)
+        //    human.currencies[gatherType].val++;
     }
 }

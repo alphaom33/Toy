@@ -22,7 +22,8 @@ public class BaseMinion : MonoBehaviour
         STORE_WATER,
         STORE_MUSCLE,
         MAKE_WATER_OR_MUSCLE,
-        DO_DAMAGE
+        DO_DAMAGE,
+        SEND_MATERIALS
     }
 
     private void Start()
@@ -41,7 +42,14 @@ public class BaseMinion : MonoBehaviour
     private IEnumerator Tick()
     {
         DoStuff();
-        yield return new WaitForSeconds(tickSpeed);
+        float timer = 0;
+        while (timer <= tickSpeed)
+        {
+            if (controller.go)
+                timer += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
         StartCoroutine(Tick());
     }
 

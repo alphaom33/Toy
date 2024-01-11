@@ -662,7 +662,6 @@ GameObject:
   - component: {fileID: 9105672921128470567}
   - component: {fileID: 2052062689817362892}
   - component: {fileID: 733770684552958390}
-  - component: {fileID: 2245927735726015601}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -767,20 +766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 7451493708409777076}
---- !u!114 &2245927735726015601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8722506962003040322}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb4eff772e4f674798f1fa69f475c02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags: []
-  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &9022685065501105498
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Name
-      value: MakeWater
+      value: MakeWaterOrMuscle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}

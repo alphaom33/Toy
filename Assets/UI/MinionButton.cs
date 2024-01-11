@@ -9,7 +9,7 @@ public class MinionButton : MonoBehaviour
 {
     private GameMaster master;
     public BaseMinion minion;
-    public CursorController cursorController;
+    public GameMaster cursorController;
 
     private Image image;
 
@@ -18,7 +18,7 @@ public class MinionButton : MonoBehaviour
     {
         image = GetComponent<Image>();
         master = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
-        cursorController = GameObject.FindWithTag("Cursor").GetComponent<CursorController>();
+        cursorController = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
         GetComponentInChildren<TMP_Text>().text = minion.name;// + " " + minion.cost;
         
         GetComponent<Button>().onClick.AddListener(SetMinion);

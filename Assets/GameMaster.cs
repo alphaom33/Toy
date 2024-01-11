@@ -15,6 +15,7 @@ public class GameMaster : MonoBehaviour
     public bool canChangeCamers = true;
     public Material selected;
     public Material no;
+    public HumanController storeHuman;
 
     [Header("Boy Stuff")]
     public HealthBar healthBar;
@@ -36,6 +37,7 @@ public class GameMaster : MonoBehaviour
     public List<Transform> camers = new();
     public Transform currentCamer;
     public CinemachineVirtualCamera virtualCamera;
+    public bool go;
 
     private void Start()
     {
@@ -47,7 +49,7 @@ public class GameMaster : MonoBehaviour
         CheckLocs();
         father = GameObject.FindWithTag("Father").GetComponent<MenuFather>();
         StartCoroutine(SlowExpose());
-        StartCoroutine(SpawnFriends());
+        //StartCoroutine(SpawnFriends());
 
         health = maxHealth;
 
@@ -63,6 +65,7 @@ public class GameMaster : MonoBehaviour
         KillHumans();
 
         Damage(0);
+        storeHuman = currentCamer.GetComponent<HumanController>();
     }
 
     private IEnumerator SlowExpose()
@@ -79,6 +82,8 @@ public class GameMaster : MonoBehaviour
         humans[0].unlockeds.Add(makeWater);
         baseUnlockeds.Add(makeWater);
         father.ResetButtons(humans[0].unlockeds);
+
+        StartCoroutine(SpawnFriends());
     }
 
     private void KillHumans()
@@ -164,7 +169,6 @@ public class GameMaster : MonoBehaviour
 
     private IEnumerator SpawnFriends()
     {
-        yield return new WaitForSeconds(spawnWaitTime);
         Vector3 position = spawnPositions[UnityEngine.Random.Range(0, 2)].transform.position;
         GameObject tmp = Instantiate(humanPrefabs[UnityEngine.Random.Range(0, humanPrefabs.Length)], position, Quaternion.Euler(0, 0, 0));
         HumanController human = tmp.GetComponentInChildren<HumanController>();
@@ -172,6 +176,15 @@ public class GameMaster : MonoBehaviour
         humans.Add(human);
 
         camers.Add(tmp.GetComponentsInChildren<Transform>()[1]);
+
+        float timer = 0;
+        while (timer <= spawnWaitTime)
+        {
+            if (go)
+                timer += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
         StartCoroutine(SpawnFriends());
     }
 }

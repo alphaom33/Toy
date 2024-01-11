@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Display : MonoBehaviour
 {
-    private CursorController cursor;
+    private GameMaster cursor;
     private TMP_Text text;
 
     // Start is called before the first frame update
     void Start()
     {
-        cursor = GameObject.FindWithTag("Cursor").GetComponent<CursorController>();
+        cursor = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
         text = GetComponent<TMP_Text>();
     }
 
