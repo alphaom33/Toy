@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CursorMove : MonoBehaviour
 {
+    public bool doRotation;
+    public Vector3 positionOffset;
+    public Vector3 rotationOffset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +30,16 @@ public class CursorMove : MonoBehaviour
         castPoint -= camer.forward * 12.5f;
 
         LayerMask mask = LayerMask.GetMask("Default", "Player", "Ignore Camra");
-
-        if (Physics.Raycast(castPoint, camer.forward, out RaycastHit hit, Mathf.Infinity, mask))
+        if (Physics.Raycast(castPoint, camer.forward, out RaycastHit hit, Mathf.Infinity, mask) && doRotation)
         {
             transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
         }
+        else
+        {
+            transform.rotation = Quaternion.Euler(rotationOffset);
+        }
+        
         if (hit.point != Vector3.zero)
-            transform.position = hit.point;
+            transform.position = hit.point + positionOffset;
     }
 }

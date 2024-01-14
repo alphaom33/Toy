@@ -806,10 +806,13 @@ MonoBehaviour:
   - {fileID: 58978669755096862, guid: 915840ddea7fdfb4083358384516d03a, type: 3}
   storeSnot: {fileID: 6293376472831203937, guid: fdbf0196ddd62be458ac4e93638c6a36, type: 3}
   makeWater: {fileID: 9158532744922571210, guid: c9bce9aa9119ca244ae5708ba4c26213, type: 3}
+  endUnlockeds:
+  - {fileID: 58978669755096862, guid: 915840ddea7fdfb4083358384516d03a, type: 3}
+  - {fileID: 1057370711760831754, guid: cf8afea9da470e44bb1e711df59eba89, type: 3}
   humanPrefabs:
   - {fileID: 4559596003965507811, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
   spawnPositions: []
-  spawnWaitTime: 10
+  spawnWaitTime: 60
   camers:
   - {fileID: 1749564472}
   currentCamer: {fileID: 1749564472}
@@ -4065,6 +4068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa60c13bf3e00a646b098e474c75f081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doRotation: 1
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1964694595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4364,6 +4370,10 @@ PrefabInstance:
       propertyPath: unlockeds.Array.data[0]
       value: 
       objectReference: {fileID: 2094173054317683744, guid: 92258cd875262d1479c0b870726e473b, type: 3}
+    - target: {fileID: 6487257946794331401, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
+      propertyPath: unlockeds.Array.data[1]
+      value: 
+      objectReference: {fileID: 58978669755096862, guid: 915840ddea7fdfb4083358384516d03a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

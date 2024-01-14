@@ -128,8 +128,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.13000004, z: 0}
-  m_LocalScale: {x: 0.024565673, y: 0.024565674, z: 0.024565674}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2220339544595447409}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -161,7 +161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 340d73e9a3e2e8e47a8d27c045b4c73e, type: 2}
+  - {fileID: 2100000, guid: bc65ea8163957b7459295d6bb13c23f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,6 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa60c13bf3e00a646b098e474c75f081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doRotation: 0
+  positionOffset: {x: 0, y: 1.25, z: 0}
+  rotationOffset: {x: 90, y: 135, z: 0}
 --- !u!135 &6890906267113770860
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -432,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+      objectReference: {fileID: 1940691605, guid: 65ec6178d02d529499ff77fff0d7e933, type: 3}
     - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -480,6 +483,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 58978669755096862}
+    - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 619767855535044848}
   m_SourcePrefab: {fileID: 100100000, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
 --- !u!4 &4474065754733946977 stripped
 Transform:
@@ -514,3 +520,25 @@ MonoBehaviour:
   myType: 8
   max: 1
   sendHuman: {fileID: 0}
+  go: 0
+--- !u!95 &619767855535044848
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139594610173955085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d45bd72801d0f04895685693d0ab109, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

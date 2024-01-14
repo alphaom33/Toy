@@ -29,6 +29,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private List<BaseMinion> baseUnlockeds = new();
     public BaseMinion storeSnot;
     public BaseMinion makeWater;
+    public BaseMinion[] endUnlockeds;
 
     [Header("Humans")]
     public GameObject[] humanPrefabs;
