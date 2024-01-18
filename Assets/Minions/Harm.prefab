@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+      objectReference: {fileID: -143300112, guid: 58efe85703d42f947b5cf88c2b31a211, type: 3}
     - target: {fileID: 3294590525510944520, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Color.b
       value: 0.3490566
@@ -80,6 +80,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1057370711760831754}
+    - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5657778281517508090}
   m_SourcePrefab: {fileID: 100100000, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
 --- !u!1 &4416855731905820551 stripped
 GameObject:
@@ -103,9 +106,30 @@ MonoBehaviour:
   tags:
   - All
   costs:
-  - 15
   - 10
-  - 7
+  - 5
+  - 5
   myType: 7
   max: 5
   damage: 1
+--- !u!95 &5657778281517508090
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416855731905820551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65157cf4c87396d4387a6da1c611cba2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

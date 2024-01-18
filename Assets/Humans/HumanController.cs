@@ -47,6 +47,7 @@ public class HumanController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(currencies[0]);
         master = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
         movement = GetComponent<HumanMovement>();
         damage = GetComponent<HumanDamage>();

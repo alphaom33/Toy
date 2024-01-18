@@ -30,6 +30,8 @@ public class GameMaster : MonoBehaviour
     public BaseMinion storeSnot;
     public BaseMinion makeWater;
     public BaseMinion[] endUnlockeds;
+    public BaseMinion water;
+    public BaseMinion muscle;
 
     [Header("Humans")]
     public GameObject[] humanPrefabs;
@@ -84,6 +86,15 @@ public class GameMaster : MonoBehaviour
         baseUnlockeds.Add(makeWater);
         father.ResetButtons(humans[0].unlockeds);
 
+        yield return new WaitUntil(() => humans[0].unlockeds.Contains(water) || humans[0].unlockeds.Contains(muscle));
+
+        foreach (BaseMinion g in endUnlockeds)
+        {
+            humans[0].unlockeds.Add(g);
+            baseUnlockeds.Add(g);
+            father.ResetButtons(humans[0].unlockeds);
+        }
+
         StartCoroutine(SpawnFriends());
     }
 
@@ -94,11 +105,10 @@ public class GameMaster : MonoBehaviour
             if (controller.health < 0)
             {
                 humans.Remove(controller);
-                int temp = camers.IndexOf(currentCamer);
-                temp++;
-                temp %= camers.Count;
-                currentCamer = camers[temp];
+
+                ChangeCurrentCamer(1);
                 camers.Remove(currentCamer);
+
                 Destroy(controller.gameObject.GetComponentsInParent<Transform>()[1].gameObject);
                 break;
             }
@@ -109,24 +119,24 @@ public class GameMaster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            currentCamer.GetComponent<MeshRenderer>().material = no;
-            int temp = camers.IndexOf(currentCamer);
-            temp++;
-            temp %= camers.Count;
-            currentCamer = camers[temp];
-            currentCamer.GetComponent<MeshRenderer>().material = selected;
-            father.ResetButtons(currentCamer.GetComponent<HumanController>().unlockeds);
+            ChangeCurrentCamer(1);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            currentCamer.GetComponent<MeshRenderer>().material = no;
-            int temp = camers.IndexOf(currentCamer);
-            temp--;
-            temp += temp < 0 ? camers.Count : 0;
-            currentCamer = camers[temp];
-            currentCamer.GetComponent<MeshRenderer>().material = selected;
-            father.ResetButtons(currentCamer.GetComponent<HumanController>().unlockeds);
+            ChangeCurrentCamer(-1);
         }
+    }
+
+    public void ChangeCurrentCamer(int sign)
+    {
+        currentCamer.GetComponent<MeshRenderer>().material = no;
+        int temp = camers.IndexOf(currentCamer);
+        temp += sign;
+        temp += temp < 0 ? camers.Count : 0;
+        temp %= camers.Count;
+        currentCamer = camers[temp];
+        currentCamer.GetComponent<MeshRenderer>().material = selected;
+        father.ResetButtons(currentCamer.GetComponent<HumanController>().unlockeds);
     }
 
     private void CamerLook()

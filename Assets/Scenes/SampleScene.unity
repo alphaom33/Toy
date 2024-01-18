@@ -803,16 +803,18 @@ MonoBehaviour:
   health: 0
   baseUnlockeds:
   - {fileID: 2094173054317683744, guid: 92258cd875262d1479c0b870726e473b, type: 3}
-  - {fileID: 58978669755096862, guid: 915840ddea7fdfb4083358384516d03a, type: 3}
+  - {fileID: 1057370711760831754, guid: cf8afea9da470e44bb1e711df59eba89, type: 3}
   storeSnot: {fileID: 6293376472831203937, guid: fdbf0196ddd62be458ac4e93638c6a36, type: 3}
   makeWater: {fileID: 9158532744922571210, guid: c9bce9aa9119ca244ae5708ba4c26213, type: 3}
   endUnlockeds:
   - {fileID: 58978669755096862, guid: 915840ddea7fdfb4083358384516d03a, type: 3}
   - {fileID: 1057370711760831754, guid: cf8afea9da470e44bb1e711df59eba89, type: 3}
+  water: {fileID: -5479462948941496800, guid: 8c441214fa182c345b471285b91a5035, type: 3}
+  muscle: {fileID: 4222511697977338947, guid: 67e764608fc0a7c448354ed2c0f6c5d2, type: 3}
   humanPrefabs:
   - {fileID: 4559596003965507811, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
   spawnPositions: []
-  spawnWaitTime: 60
+  spawnWaitTime: 5
   camers:
   - {fileID: 1749564472}
   currentCamer: {fileID: 1749564472}
@@ -4092,12 +4094,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5766088728019177440, guid: ac7355cba32da6249896d25e20865abf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766088728019177440, guid: ac7355cba32da6249896d25e20865abf, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5766088728019177440, guid: ac7355cba32da6249896d25e20865abf, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766088728019177440, guid: ac7355cba32da6249896d25e20865abf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00091552734
       objectReference: {fileID: 0}
     - target: {fileID: 6282318566954993702, guid: ac7355cba32da6249896d25e20865abf, type: 3}
       propertyPath: m_Pivot.x
@@ -4373,7 +4383,7 @@ PrefabInstance:
     - target: {fileID: 6487257946794331401, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
       propertyPath: unlockeds.Array.data[1]
       value: 
-      objectReference: {fileID: 58978669755096862, guid: 915840ddea7fdfb4083358384516d03a, type: 3}
+      objectReference: {fileID: 1057370711760831754, guid: cf8afea9da470e44bb1e711df59eba89, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
