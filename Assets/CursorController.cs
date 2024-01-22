@@ -31,7 +31,7 @@ public class CursorController : MonoBehaviour
 
     private void SpawnMans()
     {
-        if (Input.GetMouseButtonDown(0) && HasCash() && storeHuman.minionNums[master.currentMin.myType] < master.currentMin.max && (storeHuman.Equals(inMinionPlace) || master.currentMin.tags[0] == "All"))
+        if (Input.GetMouseButtonDown(0) && HasCash() && storeHuman.minionNums[master.currentMin.myType] < master.currentMin.max && (storeHuman.Equals(inMinionPlace)))// || master.currentMin.tags[0] == "All"))
         {
             Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.GetComponentsInParent<Transform>()[1]).transform;
             minion.Rotate(90, 0, 0);
@@ -43,7 +43,7 @@ public class CursorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MinionPlace"))
+        if (other.gameObject.layer == 6)
             inMinionPlace = other.GetComponentInParent<HumanController>();
         //if (other.CompareTag("Human"))
         //{
@@ -53,7 +53,7 @@ public class CursorController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("MinionPlace"))
+        if (other.gameObject.layer == 6)
             inMinionPlace = null;
     }
 

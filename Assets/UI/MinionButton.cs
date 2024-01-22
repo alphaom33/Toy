@@ -9,7 +9,7 @@ public class MinionButton : MonoBehaviour
 {
     private GameMaster master;
     public BaseMinion minion;
-    public GameMaster cursorController;
+    public GameObject cursorController;
 
     [Header("Texts")]
     public TMP_Text nameText;
@@ -24,7 +24,7 @@ public class MinionButton : MonoBehaviour
     {
         image = GetComponent<Image>();
         master = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
-        cursorController = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
+        cursorController = GameObject.FindWithTag("Cursor");
 
         nameText.text = minion.name;
 
@@ -34,7 +34,6 @@ public class MinionButton : MonoBehaviour
     private void LateUpdate()
     {
         SetCost();
-    
     }
 
     private void SetCost()
@@ -51,13 +50,13 @@ public class MinionButton : MonoBehaviour
 
     private void SetMinion()
     {
-        if (image.color != Color.red)
+        if (image.color != Color.red && Cursor.visible)
             master.SetCurrentMin(minion);
     }
 
     private void Update()
     {
-        if (cursorController.storeHuman && cursorController.storeHuman.minionNums[minion.myType] >= minion.max)
+        if (master.storeHuman && master.storeHuman.minionNums[minion.myType] >= minion.max)
             image.color = Color.red;
         else if (master.currentMin == minion)
             image.color = Color.yellow;

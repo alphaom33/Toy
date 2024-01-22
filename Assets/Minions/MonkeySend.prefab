@@ -220,6 +220,24 @@ MonoBehaviour:
   doRotation: 0
   positionOffset: {x: 0, y: 1.25, z: 0}
   rotationOffset: {x: 90, y: 135, z: 0}
+  mouseDelta:
+    m_Name: Mouse Delta
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ac7b5cd2-8b9e-4daa-821b-add710c68f57
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8d7c8981-fa0c-49fb-b3af-aa853ded768b
+      m_Path: <Mouse>/delta
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Delta
+      m_Flags: 0
+    m_Flags: 0
+  mousePos: {x: 0, y: 0}
 --- !u!135 &6890906267113770860
 SphereCollider:
   m_ObjectHideFlags: 0
