@@ -8,7 +8,7 @@ public class MenuFather : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform buttonParent;
 
-    private CursorController cursor;
+    private GameMaster cursor;
     private GameObject child;
     private List<GameObject> buttons;
 
@@ -16,8 +16,8 @@ public class MenuFather : MonoBehaviour
     void Start()
     {
         buttons = new List<GameObject>();
-        cursor = GameObject.FindWithTag("Cursor").GetComponent<CursorController>();   
-        child = GetComponentInChildren<RectTransform>().gameObject;
+        cursor = GameObject.FindWithTag("Player").GetComponent<GameMaster>();   
+        child = GetComponentsInChildren<RectTransform>()[1].gameObject;
     }
 
     private void Update()

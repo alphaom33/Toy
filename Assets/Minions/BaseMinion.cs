@@ -5,23 +5,51 @@ using UnityEngine;
 public class BaseMinion : MonoBehaviour
 {
     public HumanController human;
-    public GameMaster controller;
+    private GameMaster controller;
+
     public float tickSpeed = 0.1f;
     public string[] tags;
-    public int costType;
-    public float cost;
+    public float[] costs = new float[3];
+    public MinionType myType;
+    public int max;
+
+    public enum MinionType
+    {
+        GATHER_SNOT,
+        GATHER_WATER,
+        GATHER_MUSCLE,
+        STORE_SNOT,
+        STORE_WATER,
+        STORE_MUSCLE,
+        MAKE_WATER_OR_MUSCLE,
+        DO_DAMAGE,
+        SEND_MATERIALS
+    }
 
     private void Start()
     {
         controller = GameObject.FindWithTag("Player").GetComponent<GameMaster>();
+
+        for (int i = 0; i < costs.Length; i++)
+        {
+            human.currencies[i].val -= costs[i];
+        }
+
         Begin();
         StartCoroutine(Tick());
     }
 
     private IEnumerator Tick()
     {
-        yield return new WaitForSeconds(tickSpeed);
         DoStuff();
+        float timer = 0;
+        while (timer <= tickSpeed)
+        {
+            if (controller.go)
+                timer += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
         StartCoroutine(Tick());
     }
 

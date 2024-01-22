@@ -49,8 +49,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   tickSpeed: 0
   tags: []
-  costType: 0
-  cost: 0
+  costs:
+  - 0
+  - 0
+  - 0
 --- !u!212 &3294590525510944520
 SpriteRenderer:
   m_ObjectHideFlags: 0

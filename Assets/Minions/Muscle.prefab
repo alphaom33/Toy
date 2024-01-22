@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       propertyPath: m_Name
-      value: Muscle Variant
+      value: Muscle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7364152957919246487, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
@@ -76,6 +76,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
       insertIndex: 1
       addedObject: {fileID: 4222511697977338947}
+    - targetCorrespondingSourceObject: {fileID: 5223613820351220202, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5120524494869743708}
   m_SourcePrefab: {fileID: 100100000, guid: 82ef14c3519e3494ba53c94701e769d6, type: 3}
 --- !u!1 &1914718499966827666 stripped
 GameObject:
@@ -95,9 +98,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   human: {fileID: 0}
-  controller: {fileID: 0}
-  tickSpeed: 0.1
+  tickSpeed: 1
   tags:
   - Muscle
-  costType: 2
-  cost: 0
+  costs:
+  - 0
+  - 0
+  - 5
+  myType: 2
+  max: 3
+  gatherType: 2
+--- !u!95 &5120524494869743708
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914718499966827666}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70d2c8de05a72b94e9073c4202b2629d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

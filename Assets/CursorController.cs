@@ -6,7 +6,7 @@ using UnityEngine.ProBuilder.MeshOperations;
 public class CursorController : MonoBehaviour
 {
     public GameMaster master;
-    public bool inMinionPlace;
+    public HumanController inMinionPlace;
     public HumanController currentHuman;
     public HumanController storeHuman;
     private MenuFather father;
@@ -22,62 +22,49 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (master.currentCamera == 0)
-        {
-            SetPositionToCursor();
-            SpawnMans();
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.visible = true;
-        }
+        SpawnMans();
+        Cursor.visible = false;
         if (currentHuman != null)
             storeHuman = currentHuman;
-    }
-
-    private void SetPositionToCursor()
-    {
-        RaycastHit hit;
-        Vector3 castPoint = Input.mousePosition;
-        castPoint.z = 12.5f;
-        castPoint = Camera.main.ScreenToWorldPoint(castPoint);
-        castPoint.z -= 12.5f;
-        LayerMask mask = LayerMask.GetMask("Default", "Player", "Ignore Camra");
-        if (Physics.Raycast(castPoint, Camera.main.transform.forward, out hit, Mathf.Infinity, mask))
-        {
-            transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-        }
-        if (hit.point != Vector3.zero)
-            transform.position = hit.point;
+        currentHuman = master.currentCamer.GetComponent<HumanController>();  
     }
 
     private void SpawnMans()
     {
-        if (Input.GetMouseButtonDown(0) && inMinionPlace)
+        if (Input.GetMouseButtonDown(0) && HasCash() && storeHuman.minionNums[master.currentMin.myType] < master.currentMin.max && (storeHuman.Equals(inMinionPlace)))// || master.currentMin.tags[0] == "All"))
         {
-            Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation).transform;
+            Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.GetComponentsInParent<Transform>()[1]).transform;
             minion.Rotate(90, 0, 0);
-            minion.GetComponent<BaseMinion>().human = currentHuman;
+            BaseMinion controller = minion.GetComponent<BaseMinion>();
+            controller.human = currentHuman;
+            storeHuman.minionNums[controller.myType]++;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MinionPlace"))
-            inMinionPlace = true;
-        if (other.CompareTag("Human"))
-        {
-            currentHuman = other.GetComponent<HumanController>();
-            father.ResetButtons(currentHuman.unlockeds);
-        }
-
+        if (other.gameObject.layer == 6)
+            inMinionPlace = other.GetComponentInParent<HumanController>();
+        //if (other.CompareTag("Human"))
+        //{
+        //    currentHuman = other.GetComponent<HumanController>();
+        //    father.ResetButtons(currentHuman.unlockeds);
+        //}
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("MinionPlace"))
-            inMinionPlace = false;
-        if (other.CompareTag("Human"))
-            currentHuman = null;
+        if (other.gameObject.layer == 6)
+            inMinionPlace = null;
+    }
+
+    private bool HasCash()
+    {
+        float[] temp = master.currentMin.costs;
+        for (int i = 0; i < storeHuman.currencies.Length; i++)
+        {
+            if (storeHuman.currencies[i].val - temp[i] < 0)
+                return false;
+        }
+        return true;
     }
 }

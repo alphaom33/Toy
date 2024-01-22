@@ -8,6 +8,9 @@ TagManager:
   - Human
   - Cursor
   - Father
+  - Sign
+  - HumanSpawn
+  - HumanArea
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Overlay
-  - 
+  - Human
   - 
   - 
   - 
