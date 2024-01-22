@@ -925,6 +925,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537199312}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &541376423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4674866821868714593, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
+  m_PrefabInstance: {fileID: 5652677429991484819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &541376426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541376423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb4eff772e4f674798f1fa69f475c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags:
+  - All
+  offset: {x: 0, y: 0, z: 0}
+  thisIsGettingStupid: 0
+--- !u!54 &541376427
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541376423}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!224 &575479028 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6282318566954993702, guid: ac7355cba32da6249896d25e20865abf, type: 3}
@@ -4371,6 +4419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicHuman
       objectReference: {fileID: 0}
+    - target: {fileID: 6385753567338388483, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6487257946794331401, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
       propertyPath: unlockeds.Array.size
       value: 1
@@ -4386,7 +4438,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4674866821868714593, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 541376427}
+    - targetCorrespondingSourceObject: {fileID: 4674866821868714593, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 541376426}
   m_SourcePrefab: {fileID: 100100000, guid: 8205b65c1b79c414fbdba7babd6ce345, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
