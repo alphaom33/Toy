@@ -29,7 +29,7 @@ public class CursorMove : MonoBehaviour
         castPoint = Camera.main.ScreenToWorldPoint(castPoint);
         castPoint -= camer.forward * 12.5f;
 
-        LayerMask mask = LayerMask.GetMask("Default", "Player", "Ignore Camra");
+        LayerMask mask = LayerMask.GetMask("Default", "Player", "Ignore Camra", "Human");
         if (Physics.Raycast(castPoint, camer.forward, out RaycastHit hit, Mathf.Infinity, mask) && doRotation)
         {
             transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);

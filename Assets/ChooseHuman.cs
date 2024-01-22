@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class ChooseHuman : MonoBehaviour
@@ -26,20 +27,31 @@ public class ChooseHuman : MonoBehaviour
         }
     }
 
+    private SkinnedMeshRenderer whyIsExist(Transform other)
+    {
+        int t = 0;
+        while (other.GetComponent<Animator>() == null || t > 100) {
+        Debug.Log(other.name);
+            other = other.GetComponentsInParent<Transform>()[1];
+        }
+        return other.GetComponentInChildren<SkinnedMeshRenderer>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Human"))
+        if (other.gameObject.layer == 7)
         {
-            other.GetComponent<MeshRenderer>().material = master.selected;
+            whyIsExist(other.transform).material = master.selected;
             storeHuman = other.GetComponent<HumanController>();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Human"))
+        Debug.Log(other.tag);   
+        if (other.CompareTag("HumanArea"))
         {
-            other.GetComponent<MeshRenderer>().material = master.no;
+            other.GetComponentInParent<HumanController>().GetComponentsInParent<Transform>()[1].GetComponentInChildren<SkinnedMeshRenderer>().material = master.no;
             storeHuman = null;
         }
     }

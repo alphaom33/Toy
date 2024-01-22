@@ -6,11 +6,15 @@ public class FaceCamer : MonoBehaviour
 {
     public string[] tags;
     public Vector3 offset = new Vector3(90, 0, 0);
+    public bool thisIsGettingStupid = true;
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Camera.main.transform);
-        transform.Rotate(offset);
+        if (thisIsGettingStupid)
+        {
+            transform.LookAt(Camera.main.transform);
+            transform.Rotate(offset);
+        }
     }
 }

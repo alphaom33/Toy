@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags:
   - Snot
+  offset: {x: 90, y: 0, z: 0}
 --- !u!54 &5860959129981193818
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -152,12 +153,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818753103116803744}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10.0961485, y: 5.6418, z: 10.284041}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -11.079043, y: 6.097624, z: -6.9097314}
+  m_LocalScale: {x: 3.486464, y: 0.87899625, z: 10.143574}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 933550042290812015}
+  m_Father: {fileID: 7583648656722903865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &7712633145915451044
 MeshCollider:
@@ -272,7 +273,7 @@ Transform:
   - {fileID: 479578177218146476}
   - {fileID: 9130152758633029584}
   - {fileID: 7132553358877028806}
-  - {fileID: 933550042290812015}
+  - {fileID: 7583648656722903865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9169885924147899335
@@ -365,13 +366,13 @@ MonoBehaviour:
   - {fileID: 6293376472831203937, guid: fdbf0196ddd62be458ac4e93638c6a36, type: 3}
   - {fileID: 9158532744922571210, guid: c9bce9aa9119ca244ae5708ba4c26213, type: 3}
   - {fileID: 1057370711760831754, guid: cf8afea9da470e44bb1e711df59eba89, type: 3}
-  health: 100
   locations:
   - {fileID: 8778650214771307056}
   - {fileID: 4976865873843528545}
   - {fileID: 4058434745882784974}
   - {fileID: 1755228191983048843}
   - {fileID: 1543205669747991467}
+  health: 100
 --- !u!1 &2135903509397134048
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,12 +402,11 @@ Transform:
   m_GameObject: {fileID: 2135903509397134048}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.021, y: 0.038, z: -0.324}
-  m_LocalScale: {x: 0.108797446, y: 0.045887165, z: 0.19891939}
+  m_LocalPosition: {x: -11.079043, y: 6.0976243, z: -6.9097314}
+  m_LocalScale: {x: 0.34532616, y: 0.15580069, z: 0.9863411}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2983555474594842031}
-  m_Father: {fileID: 4151362748072464608}
+  m_Children: []
+  m_Father: {fileID: 7583648656722903865}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &421070048455708154
 MeshFilter:
@@ -472,6 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags:
   - All
+  offset: {x: 90, y: 0, z: 0}
 --- !u!54 &7131071800674138684
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -499,6 +500,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &2592962027623611973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7583648656722903865}
+  m_Layer: 0
+  m_Name: All
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7583648656722903865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592962027623611973}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.469531, y: -1.1917326, z: 1.7110872}
+  m_LocalScale: {x: 0.31505707, y: 0.20167404, z: 0.2945248}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2983555474594842031}
+  - {fileID: 933550042290812015}
+  m_Father: {fileID: 4151362748072464608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2740033219651796345
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags:
   - Water
+  offset: {x: 90, y: 0, z: 0}
 --- !u!54 &7697339859429149413
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -726,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags:
   - Water
+  offset: {x: 90, y: 0, z: 0}
 --- !u!54 &687784903832325642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -961,6 +997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags:
   - Muscle
+  offset: {x: 90, y: 0, z: 0}
 --- !u!54 &6057051651693489526
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -181,6 +181,7 @@ public class GameMaster : MonoBehaviour
     private IEnumerator SpawnFriends()
     {
         Vector3 position = spawnPositions[UnityEngine.Random.Range(0, 2)].transform.position;
+        position.y = 0.94f;
         GameObject tmp = Instantiate(humanPrefabs[UnityEngine.Random.Range(0, humanPrefabs.Length)], position, Quaternion.Euler(0, 0, 0));
         HumanController human = tmp.GetComponentInChildren<HumanController>();
         human.unlockeds = baseUnlockeds.ToList();
