@@ -12,6 +12,7 @@ public class Mousey : MonoBehaviour
 {
     public bool doIt = true;
     [SerializeField] InputAction turnAction;
+    public bool queued = true;
 
     private void OnEnable()
     {
@@ -30,15 +31,17 @@ public class Mousey : MonoBehaviour
 
     void Update()
     {
-        if (doIt)
+        if (doIt && queued)
             MoveMouseInfinitely();
+        if (Input.GetKeyDown(KeyCode.Q))
+            queued = !queued;
     }
 
     public void MoveMouseInfinitely()
     {
         float mouseXpos = turnAction.ReadValue<Vector2>().x;
         float mouseYpos = turnAction.ReadValue<Vector2>().y;
-
+        Debug.Log(mouseXpos);
         if (mouseXpos >= Screen.width)
         {
             Debug.Log(mouseXpos);

@@ -26,8 +26,8 @@ public class CursorMove : MonoBehaviour
     void Update()
     {
         mousePos += mouseDelta.ReadValue<Vector2>();
-        Debug.Log(mousePos);
         SetPositionToCursor();
+        Debug.Log("Cmer" + Camera.main.WorldToScreenPoint(transform.position).x);
     }
 
     private void SetPositionToCursor()

@@ -11,6 +11,7 @@ TagManager:
   - Sign
   - HumanSpawn
   - HumanArea
+  - Mousey
   layers:
   - Default
   - TransparentFX
