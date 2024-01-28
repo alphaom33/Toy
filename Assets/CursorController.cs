@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
 
 public class CursorController : MonoBehaviour
 {
@@ -33,6 +33,7 @@ public class CursorController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && HasCash() && storeHuman.minionNums[master.currentMin.myType] < master.currentMin.max && (storeHuman.Equals(inMinionPlace)))// || master.currentMin.tags[0] == "All"))
         {
+        Debug.Log(inMinionPlace.gameObject.name);
             Transform minion = Instantiate(master.currentMin.gameObject, transform.position, transform.rotation, storeHuman.GetComponentsInParent<Transform>()[1]).transform;
             minion.Rotate(90, 0, 0);
             BaseMinion controller = minion.GetComponent<BaseMinion>();
@@ -45,11 +46,6 @@ public class CursorController : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
             inMinionPlace = other.GetComponentInParent<HumanController>();
-        //if (other.CompareTag("Human"))
-        //{
-        //    currentHuman = other.GetComponent<HumanController>();
-        //    father.ResetButtons(currentHuman.unlockeds);
-        //}
     }
     private void OnTriggerExit(Collider other)
     {

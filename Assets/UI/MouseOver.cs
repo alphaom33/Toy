@@ -21,7 +21,8 @@ public class MouseOver : MonoBehaviour, IPointerExitHandler
         Vector3 cursorPos = Camera.main.WorldToScreenPoint(cursorC.transform.position);
         if (!stupid && cursorC.activeInHierarchy && cursorPos.x < 100)
         {
-            cursorPos.x = 115;
+            cursorPos.x = 90;
+            Debug.Log("hasdjkfsjsadk");
             mousey.doIt = false;
             Mouse.current.WarpCursorPosition(cursorPos);
             cursorC.SetActive(false);
