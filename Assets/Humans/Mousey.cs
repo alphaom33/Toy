@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.XR;
 
 
 public class Mousey : MonoBehaviour
@@ -20,7 +18,6 @@ public class Mousey : MonoBehaviour
     }
     private void OnDisable()
     {
-
         turnAction.Disable();
     }
 
@@ -33,6 +30,7 @@ public class Mousey : MonoBehaviour
     {
         if (doIt && queued)
             MoveMouseInfinitely();
+         
         if (Input.GetKeyDown(KeyCode.Q))
             queued = !queued;
     }
@@ -41,7 +39,7 @@ public class Mousey : MonoBehaviour
     {
         float mouseXpos = turnAction.ReadValue<Vector2>().x;
         float mouseYpos = turnAction.ReadValue<Vector2>().y;
-        Debug.Log(mouseXpos);
+        
         if (mouseXpos >= Screen.width)
         {
             Debug.Log(mouseXpos);

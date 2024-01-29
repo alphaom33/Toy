@@ -10,21 +10,20 @@ public class GameMaster : MonoBehaviour
 {
 
     public BaseMinion currentMin;
-    public List<HumanController> humans = new();
+    private List<HumanController> humans = new();
     private MenuFather father;
     public bool canChangeCamers = true;
     public Material selected;
     public Material no;
     public HumanController storeHuman;
 
+    public GameObject PauseMenu;
+
     [Header("Boy Stuff")]
     public HealthBar healthBar;
     public float maxHealth = 20;
     public float health;
-
-    //public CinemachineVirtualCamera[] cameras;
-    //public float currentCamera;
-
+    
     [Header("Base Unlocks")]
     [SerializeField] private List<BaseMinion> baseUnlockeds = new();
     public BaseMinion storeSnot;
@@ -69,6 +68,11 @@ public class GameMaster : MonoBehaviour
 
         Damage(0);
         storeHuman = currentCamer.GetComponent<HumanController>();
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenu.activeInHierarchy)
+        {
+            PauseMenu.SetActive(true);
+        }
     }
 
     private IEnumerator SlowExpose()
