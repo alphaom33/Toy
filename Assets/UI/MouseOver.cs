@@ -22,7 +22,6 @@ public class MouseOver : MonoBehaviour, IPointerExitHandler
         if (!stupid && cursorC.activeInHierarchy && cursorPos.x < 100)
         {
             cursorPos.x = 90;
-            Debug.Log("hasdjkfsjsadk");
             mousey.doIt = false;
             Mouse.current.WarpCursorPosition(cursorPos);
             cursorC.SetActive(false);

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject canvas;
     private void OnEnable()
     {
-        foreach(Transform t in GetComponentsInParent<Transform>()[1].GetComponentsInChildren<Transform>())
+        foreach(Transform t in canvas.transform)
         {
             if (t.gameObject.name != "Canvas" && t.name != "Pause Menu")
                 t.gameObject.SetActive(false);
@@ -25,7 +26,20 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            gameObject.SetActive(false);
+            Disable();
         }
+    }
+
+    public void Disable()
+    {
+        foreach(Transform t in canvas.transform)
+        {
+            if (t.name != gameObject.name)
+                t.gameObject.SetActive(true);
+            Debug.Log(t.name);
+        }
+        Time.timeScale = 1; 
+
+        gameObject.SetActive(false);
     }
 }

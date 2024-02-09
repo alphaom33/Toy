@@ -17,6 +17,7 @@ public class ChooseHuman : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(storeHuman);
         if (Input.GetMouseButtonDown(0) && storeHuman)
         {
             MonkeySend monkeySend = GetComponentInParent<MonkeySend>();
@@ -27,28 +28,28 @@ public class ChooseHuman : MonoBehaviour
         }
     }
 
-    private SkinnedMeshRenderer whyIsExist(Transform other)
+    private Transform whyIsExist(Transform other)
     {
         int t = 0;
         while (other.GetComponent<Animator>() == null || t > 100) {
-        Debug.Log(other.name);
             other = other.GetComponentsInParent<Transform>()[1];
         }
-        return other.GetComponentInChildren<SkinnedMeshRenderer>();
+        return other.GetComponentsInParent<Transform>()[1];
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 7)
         {
-            whyIsExist(other.transform).material = master.selected;
-            storeHuman = other.GetComponent<HumanController>();
+            Transform parent = whyIsExist(other.transform); 
+            parent.GetComponentInChildren<SkinnedMeshRenderer>().material = master.selected;
+            Debug.Log(parent.name);
+            storeHuman = parent.GetComponentInChildren<HumanController>();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.tag);   
         if (other.CompareTag("HumanArea"))
         {
             other.GetComponentInParent<HumanController>().GetComponentsInParent<Transform>()[1].GetComponentInChildren<SkinnedMeshRenderer>().material = master.no;

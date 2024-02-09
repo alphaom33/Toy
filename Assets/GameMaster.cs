@@ -10,7 +10,7 @@ public class GameMaster : MonoBehaviour
 {
 
     public BaseMinion currentMin;
-    private List<HumanController> humans = new();
+    public List<HumanController> humans = new();
     private MenuFather father;
     public bool canChangeCamers = true;
     public Material selected;

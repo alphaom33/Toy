@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -9,8 +10,15 @@ using UnityEngine.InputSystem.LowLevel;
 public class Mousey : MonoBehaviour
 {
     public bool doIt = true;
-    [SerializeField] InputAction turnAction;
     public bool queued = true;
+
+    public SettingsObject settings;
+
+    [Header("Mouse")]
+    [SerializeField] InputAction turnAction;
+    public Vector2 mousePos;
+    public float mouseSpeed;
+
 
     private void OnEnable()
     {
@@ -23,41 +31,54 @@ public class Mousey : MonoBehaviour
 
     void Start()
     {
+        WindowHandler.Init();
         Cursor.visible = false;
     }
 
     void Update()
     {
-        if (doIt && queued)
-            MoveMouseInfinitely();
-         
+        mouseSpeed = settings.mouseSensitivity;
+        if (WindowHandler.IsFocus())
+        {
+            DoMouseStuff();
+        }
         if (Input.GetKeyDown(KeyCode.Q))
             queued = !queued;
     }
 
-    public void MoveMouseInfinitely()
+    private void DoMouseStuff()
     {
-        float mouseXpos = turnAction.ReadValue<Vector2>().x;
-        float mouseYpos = turnAction.ReadValue<Vector2>().y;
-        
-        if (mouseXpos >= Screen.width)
+        mousePos += new Vector2(turnAction.ReadValue<Vector2>().x, turnAction.ReadValue<Vector2>().y);
+
+        if (doIt && queued)
         {
-            Debug.Log(mouseXpos);
-            Mouse.current.WarpCursorPosition(new Vector2(10, mouseYpos));
+            mousePos = MoveMouseInfinitely();
+//            Debug.Log("ajsk");
         }
-        else if (mouseXpos <= 0)
+        Mouse.current.WarpCursorPosition(mousePos * mouseSpeed);
+    }
+
+    public Vector2 MoveMouseInfinitely()
+    {
+        Vector2 changeVector = mousePos;
+        if (mousePos.x >= Screen.width)
         {
-            Mouse.current.WarpCursorPosition(new Vector2(Screen.width - 10, mouseYpos));
+            changeVector.x = 10;
+        }
+        else if (mousePos.x <= 0)
+        {
+            changeVector.x = Screen.width - 10;
         }
 
-        if (mouseYpos >= Screen.height)
+        if (mousePos.y >= Screen.height)
         {
-            Debug.Log(mouseXpos);
-            Mouse.current.WarpCursorPosition(new Vector2(mouseXpos, 10));
+            changeVector.y = 10;
         }
-        else if (mouseYpos <= 0)
+        else if (mousePos.y <= 0)
         {
-            Mouse.current.WarpCursorPosition(new Vector2(mouseXpos, Screen.height - 10));
+            changeVector.y = Screen.height - 10;
         }
+        
+        return changeVector;
     }
 }
